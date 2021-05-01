@@ -5,11 +5,11 @@ l4 = {3, 5}
 l5 = {1, 2, 3}
 l6 = frozenset([1, 2, 3, 4])  # For a set that I don't want to make mutable
 
-print(l3 & l4)
-print(l3 | l4)
+print(l3 & l4)  # 3
+print(l3 | l4)  # {1, 2, 3, 4, 5}
 
-print(l5 ^ l3)
-print(l5 < l3)
+print(l5 ^ l3)  # {4}
+print(l5 < l3)  # True
 
 
 def test(arg, result=[]):
@@ -17,8 +17,8 @@ def test(arg, result=[]):
     return result
 
 
-print(test('a'))
-print(test('b'))
+print(test('a'))  # ['a']
+print(test('b'))  # Prints both 'a' and 'b'. List does not empty.
 
 
 def test_dic(**kwargs):
@@ -83,7 +83,7 @@ def a(x): return x + 3
 print(a(4))
 
 
-#  Ejemplo de Generator, which doesn't consume memory like lists since it only stores the last value
+#  Ejemplo de Generator, which do not consume memory like lists
 
 def my_range(first=0, last=10, step=1):
     number = first
@@ -101,4 +101,61 @@ for x in genobj:
     print(x)
 
 
-""" Page 217. """
+#  Ejemplo de Decorators
+
+def document_it(func):
+    def new_function(*args, **kwargs):
+        print('Running function: ', func.__name__)
+        print('Positional arguments: ', args)
+        print('Keyword arguments: ', kwargs)
+        result = func(*args, **kwargs)
+        print('Result: ', result)
+        return result
+    return new_function
+
+
+def square_it(func):
+    def new_function(*args, **kwargs):
+        return func(*args) ** 2
+    return new_function
+
+
+@document_it
+@square_it  # The decorator closest to the function runs first
+def add_ints(a, b):
+    return (a + b)
+
+
+add_ints(3, 5, nombre='Nicolas')
+
+
+#  Uso de global variables, hay que declararlas
+
+animal = 'gato'
+
+
+def change_gato():
+    global animal
+    animal += 'pepito'
+
+
+print(animal)  # 'gato'
+change_gato()
+print(animal)  # 'gatopepito'
+
+
+#  Usando Recursion para aplastart una lista
+
+def flatten(lol):
+    for item in lol:
+        if isinstance(item, list):
+            for subitem in flatten(item):
+                yield subitem
+        else:
+            yield item
+
+
+lol = [1, 2, [3, 4, 5], [6, [7, 8, 9], []]]
+print(list(flatten(lol)))  # 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+

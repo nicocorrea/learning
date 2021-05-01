@@ -83,7 +83,7 @@ def a(x): return x + 3
 print(a(4))
 
 
-#  Ejemplo de Generator, which doesn't consume memory as lists since it only stores the last value
+#  Ejemplo de Generator, which doesn't consume memory like lists since it only stores the last value
 
 def my_range(first=0, last=10, step=1):
     number = first

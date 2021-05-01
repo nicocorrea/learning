@@ -159,3 +159,35 @@ lol = [1, 2, [3, 4, 5], [6, [7, 8, 9], []]]
 print(list(flatten(lol)))  # 1, 2, 3, 4, 5, 6, 7, 8, 9
 
 
+#  Ejercicio para imprimir 'start' y 'end' con decorator
+def decorator(func):
+    def inner_function(*args, **kwargs):
+        print('start')
+        result = func(*args, **kwargs)
+        print('end')
+        return result
+    return inner_function
+
+
+@decorator
+def test():
+    print('nicolas')
+
+
+test()
+
+
+# Ejercicio de crear tu propia exception, BASICO
+
+class OopsException(Exception):
+    pass
+
+
+def test_exception():
+    try:
+        raise OopsException('Caught an oops')
+    except OopsException as exp:
+        print(exp)
+
+
+test_exception()

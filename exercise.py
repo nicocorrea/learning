@@ -1,3 +1,5 @@
+from dataclasses import dataclass
+from collections import namedtuple
 l1 = [1, 2, 3, 4]
 l2 = [2, 3]
 l3 = {1, 2, 3, 4}
@@ -211,6 +213,12 @@ class A():
     def type_of_class():
         print("My name is an alphabet letter.")
 
+    def __str__(self):
+        return 'I am __str__'
+
+    def __repr__(self):
+        return 'I am __repr__'
+
 
 easy_a = A()
 breezy_a = A()
@@ -218,4 +226,94 @@ wheezy_a = A()
 A.kids()  # 'A has 3 little objects.'
 A.type_of_class()
 
-""" I left at page 258. """
+print(breezy_a)  # 'I am __str__'
+
+
+#  Ejemplo de namedtuples
+
+
+Pepe = namedtuple('Pepe', 'bill tail')
+duck = Pepe('wide orange', 'long')
+duck2 = Pepe(tail='short', bill='ioio')
+print(duck)  # Pepe(bill='wide orange', tail='long')
+print(duck2)  # Pepe(bill='ioio', tail='short')
+
+
+#  Ejemplo de dataclasses, used to store data and not much behavior (method)
+
+
+@dataclass
+class AnimalClass:
+    name: str
+    habitat: str
+    teeth: int = 0
+
+
+snowman = AnimalClass('yeti', 'Himalayas', 46)
+duck = AnimalClass(habitat='lake', name='duck')
+print(snowman)  # AnimalClass(name='yeti', habitat='Himalayas', teeth=46)
+print(duck)  # AnimalClass(name='duck', habitat='lake', teeth=0)
+
+
+#  Ejercicio de capitulo 10
+
+class Element():
+
+    def __init__(self, name, symbol, number):
+        self.__name = name
+        self.__symbol = symbol
+        self.__number = number
+
+    def __str__(self):
+        return self.name + self.symbol + str(self.number)
+
+    @property
+    def name(self):
+        return self.__name
+
+    @property
+    def symbol(self):
+        return self.__symbol
+
+    @property
+    def number(self):
+        return self.__number
+
+
+test = {'name': 'Hydrogen', 'symbol': 'H', 'number': 1}
+
+example = Element(**test)
+print(example)
+
+
+class Laser():
+
+    def does(self):
+        return 'disintegrate'
+
+
+class Claw():
+
+    def does(self):
+        return 'crush'
+
+
+class Smartphone():
+
+    def does(self):
+        return 'ring'
+
+
+class Robot():
+
+    def __init__(self, laser, claw, smartphone):
+        self.laser = laser
+        self.claw = claw
+        self.smartphone = smartphone
+
+    def does(self):
+        print(self.laser.does(), self.claw.does(), self.smartphone.does())
+
+
+r = Robot(Laser(), Claw(), Smartphone())
+r.does()

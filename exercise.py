@@ -193,4 +193,29 @@ def test_exception():
 test_exception()
 
 
-#  this is to test remote and local branch
+class A():
+
+    count = 0
+
+    def __init__(self):
+        A.count += 1
+
+    def exclaim(self):
+        print("I am A.")
+
+    @classmethod
+    def kids(cls):
+        print("A has", cls.count, "little objects.")
+
+    @staticmethod
+    def type_of_class():
+        print("My name is an alphabet letter.")
+
+
+easy_a = A()
+breezy_a = A()
+wheezy_a = A()
+A.kids()  # 'A has 3 little objects.'
+A.type_of_class()
+
+""" I left at page 258. """

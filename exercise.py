@@ -317,3 +317,6 @@ class Robot():
 
 r = Robot(Laser(), Claw(), Smartphone())
 r.does()
+
+
+""" This is a test. """

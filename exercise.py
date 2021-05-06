@@ -1,3 +1,4 @@
+from collections import defaultdict
 from dataclasses import dataclass
 from collections import namedtuple
 l1 = [1, 2, 3, 4]
@@ -319,4 +320,24 @@ r = Robot(Laser(), Claw(), Smartphone())
 r.does()
 
 
-""" This should be related to #2.
+# Ejemplo de setdeafult() y defaultdict()
+
+periodic_table = {'hydrogen': 1, 'helium': 2}
+periodic_table.setdefault('carbon', 12)  # Agrega esta key-value
+
+periodic_table.setdefault('helium', 450)
+# Me devuelve el id de 'helium' que ya esta
+
+
+periodic_table = defaultdict(int)
+# int es una function que asigna 0 por default
+periodic_table['helim'] = 1
+periodic_table['prueba']
+print(periodic_table)  # {'helim': 1, 'prueba': 0}
+
+periodic_table = defaultdict(lambda: 'que?')
+periodic_table['primero']
+print(periodic_table)  # {'primero': 'que?'}
+
+
+""" Seguir de pagina 283

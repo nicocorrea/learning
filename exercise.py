@@ -319,4 +319,4 @@ r = Robot(Laser(), Claw(), Smartphone())
 r.does()
 
 
-""" This is a test. """
+""" This should be related to #2.

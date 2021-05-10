@@ -1,3 +1,6 @@
+import itertools
+from collections import deque
+from collections import Counter
 from collections import defaultdict
 from dataclasses import dataclass
 from collections import namedtuple
@@ -339,5 +342,47 @@ periodic_table = defaultdict(lambda: 'que?')
 periodic_table['primero']
 print(periodic_table)  # {'primero': 'que?'}
 
+food_counter = defaultdict(int)
+for food in ['papa', 'carne', 'carne']:
+    food_counter[food] += 1
 
-""" Seguir de pagina 283
+print(food_counter)
+""" Si usabamos el diccionario normal Python hubiera levantado una exception en el primer food_counter[food] que no existe"""
+
+
+# Ejemplo de Counter()
+
+
+breakfast = ['spam', 'spam', 'eggs', 'spam']
+breakfast_counter = Counter(breakfast)
+print(breakfast_counter)
+print(Counter('pepe'))
+
+""" Similar a 'sets', puedo usar intersection (&) y union (|) entre Counters. """
+
+# 's', porque me devuelta una lista con cada letra
+print(deque('nicolas').pop())
+
+for item in itertools.chain([1, 2], [5, 5]):
+    print(item)
+# 1, 2, 5, 5
+
+# for item in itertools.cycle([1, 2, 3, 4]):
+#    pass
+    # print(item)
+# 1, 2, 3, 4, 1, 2, 3, 4 ..... forever
+
+for item in itertools.accumulate([1, 2, 3, 4]):
+    print(item)
+# 1, 2, 6, 10
+
+
+def multiply(a: int, b: int) -> int:
+    return a * b
+
+
+for item in itertools.accumulate([1, 2, 2, 2], multiply):
+    print(item)
+#1, 2, 4, 8
+
+""" sigo de pagina 288  """

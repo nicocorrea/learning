@@ -400,6 +400,26 @@ print(random()) # Returns a number from 0 to 1, in float
 
 import unicodedata
 
+def unicode_test(value):
+    name = unicodedata.name(value)
+    value2 = unicodedata.lookup(name)
+    print(f'value={value}, name={name}, value2={value2}')
+
+unicode_test('A')
+# value=A, name=LATIN CAPITAL LETTER A, value2=A
+
+unicode_test('\u00f2')
+# value=ò, name=LATIN SMALL LETTER O WITH GRAVE, value2=ò
+
+print(len('$'), len('\u00f3'))
+# 1 1 because it counts UNICODE characters, not bytes
 
 
+snowman = '\u2603'
+print(len(snowman)) # 1
+print(len(snowman.encode('utf-8'))) # 3, porque son bytes
+print(type(snowman)) # 'str'
+print(type(snowman.encode('utf8'))) # 'bytes'
 
+""" Continue from page 306
+"""

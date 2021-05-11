@@ -385,4 +385,21 @@ for item in itertools.accumulate([1, 2, 2, 2], multiply):
     print(item)
 #1, 2, 4, 8
 
-""" sigo de pagina 288  """
+
+# Ejemplo de random
+from random import choice, sample, randint, random
+
+ejemplo = ['pepe', 'nico', 1, 5, 20]
+print(choice(ejemplo)) # Returns one element random
+print(sample(ejemplo, 3))  # Returns 3 random elements from the list
+print(randint(1, 5)) # Returns a number between 1 and 5
+print(random()) # Returns a number from 0 to 1, in float
+
+
+# Unicode
+
+import unicodedata
+
+
+
+

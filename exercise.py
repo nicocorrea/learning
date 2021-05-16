@@ -421,5 +421,57 @@ print(len(snowman.encode('utf-8'))) # 3, porque son bytes
 print(type(snowman)) # 'str'
 print(type(snowman.encode('utf8'))) # 'bytes'
 
-""" Continue from page 306
+
+from html.entities import html5
+
+print(type(html5['egrave'])) # from HTML character entity to Unicode
+
+import html
+char = '\u00e9'
+dec_value = ord(char)
+print(html.entities.codepoint2name[dec_value]) # 'eacute' which means it converts from byte_value to HTML-compatible string
+
+
+#  Ejemplo de regular expressions
+
+import re
+word_to_match = 'you'
+phrase = 'you are mine'
+print(re.match(word_to_match, phrase))  # returns '<re.Match object; span=(0, 3), match='you'>'
+print(re.match(word_to_match, phrase).group() if re.match(word_to_match, phrase) else 'nothing matched') # returns 'you'
+
+print(re.search(word_to_match, phrase).group())  # 'you'
+print(re.findall(word_to_match, phrase)) # '[you]'
+print(re.split(word_to_match, phrase)) # '['', ' are mine']'
+print(re.sub(word_to_match, 'ice cream', phrase)) # 'ice cream are mine'
+
+
+source = 'Young Frankestein'
+m = re.match('.*Frank', source)
+if m:
+    print(m.group())  # 'Young Frank'
 """
+The '.' means any single character
+The '*' means zero or more of the preceding thing. Together, '.*' mean any number of chracters (even zero)
+Frank is the phrase that we wanted to match, somewhere.
+"""
+
+
+m = re.findall('n.?', source)
+# The '.' says that we want one more letter, and the '?' makes it optional.
+if m:
+    print(m)
+
+
+m = re.split('n', source)
+# To split by a simple string rather than the .split() command from String
+if m:
+    print(m)  # '['You', 'g Fra', 'kestei', '']'
+
+
+# Regular Expressions - special characters, excamples
+
+import string
+printable = string.printable
+print(printable[0:50])
+print(printable[50:])

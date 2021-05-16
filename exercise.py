@@ -475,3 +475,11 @@ import string
 printable = string.printable
 print(printable[0:50])
 print(printable[50:])
+
+print(re.findall('\d', printable)) # Returns all digits inside printable
+print(re.findall('\w', printable)) # Returns all digits/letters/underscore
+print(re.findall('\s', printable)) # Returns all spaces, in this case [' ', '\t', '\n', '\r', '\x0b', '\x0c']
+
+""" From 321 to 330 it's all about Bytes and Binaries, that I did not go through """
+
+

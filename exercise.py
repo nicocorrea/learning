@@ -482,4 +482,4 @@ print(re.findall('\s', printable)) # Returns all spaces, in this case [' ', '\t'
 
 """ From 321 to 330 it's all about Bytes and Binaries, that I did not go through """
 
-
+""" Testing
